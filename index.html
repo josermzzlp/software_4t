@@ -1,775 +1,537 @@
-[4:46 p.m., 15/1/2026] JIMENEZ❣️: <!doctype html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Clasificación del Software — Guía Visual</title>
-  <meta name="description" content="Guía visual para clasificar software por Licencia, Función y Operación." />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Clasificación del Software</title>
+<meta name="description" content="Página interactiva: clasificación del software por licencia, función y operación." />
 
-  <!-- Inter (parecido a muchas landings modernas) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <style>
-    :root{
-      --bg:#070A12;
-      --panel: rgba(255,255,255,.06);
-      --panel2: rgba(255,255,255,.04);
-      --border: rgba(255,255,255,.10);
-      --text:#EAF0FF;
-      --muted: rgba(234,240,255,.72);
-      --muted2: rgba(234,240,255,.52);
-      --a:#7C5CFF;
-      --b:#00D1FF;
-      --ok:#2EE59D;
-      --warn:#FFCC66;
-      --radius: 18px;
-      --shadow: 0 18px 60px rgba(0,0,0,.45);
-    }
+<style>
+:root{
+--bg:#070A12;
+--panel: rgba(255,255,255,.06);
+--panel2: rgba(255,255,255,.04);
+--border: rgba(255,255,255,.10);
+--text:#EAF0FF;
+--muted: rgba(234,240,255,.72);
+--muted2: rgba(234,240,255,.52);
+--a:#7C5CFF;
+--b:#00D1FF;
+--ok:#2EE59D;
+--warn:#FFCC66;
+--radius: 18px;
+--shadow: 0 18px 60px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+margin:0;
+font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+color: var(--text);
+background:
+radial-gradient(900px 500px at 18% -10%, rgba(124,92,255,.35), transparent 60%),
+radial-gradient(900px 500px at 88% 10%, rgba(0,209,255,.18), transparent 58%),
+radial-gradient(900px 500px at 60% 120%, rgba(46,229,157,.10), transparent 60%),
+var(--bg);
+overflow-x:hidden;
+}
+a{color:inherit; text-decoration:none}
+.container{max-width:1120px; margin:0 auto; padding:0 18px}
+.blur-orb{
+position:absolute; inset:auto;
+width:520px; height:520px; border-radius:50%;
+filter: blur(80px);
+opacity:.20; pointer-events:none;
+}
+.orb1{left:-140px; top:90px; background:var(--a)}
+.orb2{right:-160px; top:20px; background:var(--b)}
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(900px 500px at 18% -10%, rgba(124,92,255,.35), transparent 60%),
-        radial-gradient(900px 500px at 88% 10%, rgba(0,209,255,.18), transparent 58%),
-        radial-gradient(900px 500px at 60% 120%, rgba(46,229,157,.10), transparent 60%),
-        var(--bg);
-      overflow-x:hidden;
-    }
+.topbar{
+position:sticky; top:0; z-index:50;
+backdrop-filter: blur(14px);
+background: rgba(7,10,18,.55);
+border-bottom: 1px solid var(--border);
+}
+.topbar-inner{
+height:64px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px;
+}
+.brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px;}
+.logo{
+width:28px; height:28px; border-radius:10px;
+background: linear-gradient(135deg, var(--a), var(--b));
+box-shadow: 0 10px 30px rgba(124,92,255,.25);
+}
+.nav{display:flex; align-items:center; gap:10px;}
+.nav a{
+color: var(--muted);
+font-weight:600;
+font-size:14px;
+padding:8px 10px;
+border-radius:12px;
+}
+.nav a:hover{background: rgba(255,255,255,.06); color: var(--text)}
+.cta{display:flex; gap:10px; align-items:center;}
+.btn{
+display:inline-flex; align-items:center; justify-content:center;
+gap:10px;
+padding:10px 12px;
+border-radius:14px;
+border: 1px solid var(--border);
+background: rgba(255,255,255,.05);
+font-weight:700;
+font-size:14px;
+color: var(--text);
+cursor:pointer;
+transition: transform .12s ease, background .12s ease, border-color .12s ease;
+user-select:none;
+}
+.btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.08)}
+.btn.primary{
+border:0;
+color:#06101a;
+background: linear-gradient(135deg, var(--a), var(--b));
+box-shadow: 0 14px 40px rgba(124,92,255,.20);
+}
 
-    a{color:inherit; text-decoration:none}
-    .container{max-width:1120px; margin:0 auto; padding:0 18px}
-    .blur-orb{
-      position:absolute; inset:auto;
-      width:520px; height:520px; border-radius:50%;
-      filter: blur(80px);
-      opacity:.20; pointer-events:none;
-    }
-    .orb1{left:-140px; top:90px; background:var(--a)}
-    .orb2{right:-160px; top:20px; background:var(--b)}
+.hero{position:relative; padding: 56px 0 18px;}
+.kicker{
+display:inline-flex; align-items:center; gap:10px;
+padding:8px 10px;
+border: 1px solid var(--border);
+border-radius:999px;
+background: rgba(255,255,255,.05);
+color: var(--muted);
+font-size:13px;
+font-weight:700;
+}
+.dot{
+width:9px;height:9px;border-radius:99px;
+background: linear-gradient(135deg, var(--ok), var(--b));
+box-shadow: 0 0 0 6px rgba(46,229,157,.12);
+}
+h1{
+margin:14px 0 10px;
+font-size: clamp(34px, 4.8vw, 56px);
+line-height: 1.05;
+letter-spacing: -0.04em;
+}
+.sub{
+margin:0;
+color: var(--muted);
+font-size: clamp(15px, 1.5vw, 18px);
+max-width: 760px;
+line-height:1.55;
+}
+.hero-grid{
+margin-top:18px;
+display:grid;
+grid-template-columns: 1.25fr .75fr;
+gap:14px;
+align-items:stretch;
+}
+.panel{
+border:1px solid var(--border);
+border-radius: var(--radius);
+background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+box-shadow: var(--shadow);
+}
+.panel-inner{padding:14px}
+.quick{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;}
+.pill{
+display:inline-flex; align-items:center; gap:8px;
+padding:10px 12px;
+border-radius:999px;
+border:1px solid var(--border);
+background: rgba(255,255,255,.04);
+color: var(--muted);
+font-weight:700;
+font-size:13px;
+cursor:pointer;
+transition: background .12s ease, transform .12s ease;
+}
+.pill:hover{background: rgba(255,255,255,.07); transform: translateY(-1px)}
+.pill.active{
+background: rgba(124,92,255,.18);
+border-color: rgba(124,92,255,.35);
+color: var(--text);
+}
+.searchbar{
+display:flex;
+gap:10px;
+align-items:center;
+padding:12px 12px;
+border-radius: 16px;
+border:1px solid var(--border);
+background: rgba(255,255,255,.04);
+}
+.searchbar input{
+width:100%;
+border:0; outline:0;
+background: transparent;
+color: var(--text);
+font-size:14px;
+font-weight:600;
+}
+.searchbar input::placeholder{color: rgba(234,240,255,.45); font-weight:600}
+.kbd{
+font-size:12px;
+font-weight:800;
+color: rgba(234,240,255,.60);
+border:1px solid var(--border);
+padding:6px 8px;
+border-radius:12px;
+background: rgba(255,255,255,.03);
+white-space:nowrap;
+}
 
-    /* Topbar */
-    .topbar{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(14px);
-      background: rgba(7,10,18,.55);
-      border-bottom: 1px solid var(--border);
-    }
-    .topbar-inner{
-      height:64px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      font-weight:800; letter-spacing:.2px;
-    }
-    .logo{
-      width:28px; height:28px; border-radius:10px;
-      background: linear-gradient(135deg, var(--a), var(--b));
-      box-shadow: 0 10px 30px rgba(124,92,255,.25);
-    }
-    .nav{
-      display:flex; align-items:center; gap:10px;
-    }
-    .nav a{
-      color: var(--muted);
-      font-weight:600;
-      font-size:14px;
-      padding:8px 10px;
-      border-radius:12px;
-    }
-    .nav a:hover{background: rgba(255,255,255,.06); color: var(--text)}
-    .cta{
-      display:flex; gap:10px; align-items:center;
-    }
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:10px;
-      padding:10px 12px;
-      border-radius:14px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.05);
-      font-weight:700;
-      font-size:14px;
-      color: var(--text);
-      cursor:pointer;
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
-      user-select:none;
-    }
-    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.08)}
-    .btn.primary{
-      border:0;
-      color:#06101a;
-      background: linear-gradient(135deg, var(--a), var(--b));
-      box-shadow: 0 14px 40px rgba(124,92,255,.20);
-    }
+.section{padding: 18px 0 54px;}
+.section h2{margin: 0 0 10px; font-size: 18px; letter-spacing: -0.01em;}
+.section p.lead{margin:0 0 14px; color: var(--muted); line-height:1.55; font-size:14px;}
 
-    /* Hero */
-    .hero{
-      position:relative;
-      padding: 56px 0 18px;
-    }
-    .kicker{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:8px 10px;
-      border: 1px solid var(--border);
-      border-radius:999px;
-      background: rgba(255,255,255,.05);
-      color: var(--muted);
-      font-size:13px;
-      font-weight:700;
-    }
-    .dot{
-      width:9px;height:9px;border-radius:99px;
-      background: linear-gradient(135deg, var(--ok), var(--b));
-      box-shadow: 0 0 0 6px rgba(46,229,157,.12);
-    }
-    h1{
-      margin:14px 0 10px;
-      font-size: clamp(34px, 4.8vw, 56px);
-      line-height: 1.05;
-      letter-spacing: -0.04em;
-    }
-    .sub{
-      margin:0;
-      color: var(--muted);
-      font-size: clamp(15px, 1.5vw, 18px);
-      max-width: 760px;
-      line-height:1.55;
-    }
+.grid{display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap:14px;}
+.card{
+border:1px solid var(--border);
+border-radius: 18px;
+background: rgba(255,255,255,.04);
+padding:14px;
+transition: transform .12s ease, background .12s ease, border-color .12s ease;
+min-height: 156px;
+position:relative;
+overflow:hidden;
+}
+.card:hover{
+transform: translateY(-2px);
+background: rgba(255,255,255,.06);
+border-color: rgba(255,255,255,.14);
+}
+.tag{
+display:inline-flex; align-items:center; gap:8px;
+font-size:12px; font-weight:800;
+color: rgba(234,240,255,.70);
+padding:7px 10px;
+border-radius:999px;
+border:1px solid var(--border);
+background: rgba(255,255,255,.03);
+}
+.tag strong{color: var(--text)}
+.card h3{margin:10px 0 6px; font-size:16px; letter-spacing:-0.01em;}
+.card p{margin:0; color: var(--muted); font-size:13px; line-height:1.55;}
+.hint{margin-top:10px; color: var(--muted2); font-size:12px; font-weight:600;}
 
-    .hero-grid{
-      margin-top:18px;
-      display:grid;
-      grid-template-columns: 1.25fr .75fr;
-      gap:14px;
-      align-items:stretch;
-    }
+.mini{display:flex; flex-direction:column; gap:12px; height:100%;}
+.mini .box{
+border:1px solid var(--border);
+border-radius: 18px;
+background: rgba(255,255,255,.04);
+padding:14px;
+}
+.mini h3{margin:0 0 6px; font-size:14px; letter-spacing:-0.01em;}
+.mini p{margin:0;color:var(--muted);font-size:13px;line-height:1.55}
+.stats{display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:10px;}
+.stat{border:1px solid var(--border); border-radius: 16px; padding:12px; background: rgba(255,255,255,.03);}
+.stat b{display:block; font-size:18px}
+.stat span{color:var(--muted); font-size:12px; font-weight:700}
 
-    .panel{
-      border:1px solid var(--border);
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      box-shadow: var(--shadow);
-    }
+footer{
+border-top: 1px solid var(--border);
+padding: 18px 0;
+color: var(--muted);
+font-size: 13px;
+}
+.foot{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;}
+.smalllinks{display:flex; gap:10px; flex-wrap:wrap}
+.smalllinks a{padding:8px 10px; border-radius:12px}
+.smalllinks a:hover{background: rgba(255,255,255,.06); color: var(--text)}
 
-    .panel-inner{padding:14px}
-    .quick{
-      display:flex; gap:10px; flex-wrap:wrap;
-      margin-top:12px;
-    }
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:10px 12px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.04);
-      color: var(--muted);
-      font-weight:700;
-      font-size:13px;
-      cursor:pointer;
-      transition: background .12s ease, transform .12s ease;
-    }
-    .pill:hover{background: rgba(255,255,255,.07); transform: translateY(-1px)}
-    .pill.active{
-      background: rgba(124,92,255,.18);
-      border-color: rgba(124,92,255,.35);
-      color: var(--text);
-    }
-
-    /* Search */
-    .searchbar{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      padding:12px 12px;
-      border-radius: 16px;
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.04);
-    }
-    .searchbar input{
-      width:100%;
-      border:0; outline:0;
-      background: transparent;
-      color: var(--text);
-      font-size:14px;
-      font-weight:600;
-    }
-    .searchbar input::placeholder{color: rgba(234,240,255,.45); font-weight:600}
-    .kbd{
-      font-size:12px;
-      font-weight:800;
-      color: rgba(234,240,255,.60);
-      border:1px solid var(--border);
-      padding:6px 8px;
-      border-radius:12px;
-      background: rgba(255,255,255,.03);
-      white-space:nowrap;
-    }
-
-    /* Sections */
-    .section{
-      padding: 18px 0 54px;
-    }
-    .section h2{
-      margin: 0 0 10px;
-      font-size: 18px;
-      letter-spacing: -0.01em;
-    }
-    .section p.lead{
-      margin:0 0 14px;
-      color: var(--muted);
-      line-height:1.55;
-      font-size:14px;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap:14px;
-    }
-    .card{
-      border:1px solid var(--border);
-      border-radius: 18px;
-      background: rgba(255,255,255,.04);
-      padding:14px;
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
-      min-height: 156px;
-      position:relative;
-      overflow:hidden;
-    }
-    .card:hover{
-      transform: translateY(-2px);
-      background: rgba(255,255,255,.06);
-      border-color: rgba(255,255,255,.14);
-    }
-    .tag{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      font-size:12px;
-      font-weight:800;
-      color: rgba(234,240,255,.70);
-      padding:7px 10px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.03);
-    }
-    .tag strong{color: var(--text)}
-    .card h3{
-      margin:10px 0 6px;
-      font-size:16px;
-      letter-spacing:-0.01em;
-    }
-    .card p{
-      margin:0;
-      color: var(--muted);
-      font-size:13px;
-      line-height:1.55;
-    }
-    .hint{
-      margin-top:10px;
-      color: var(--muted2);
-      font-size:12px;
-      font-weight:600;
-    }
-
-    /* Right panel */
-    .mini{
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-      height:100%;
-    }
-    .mini .box{
-      border:1px solid var(--border);
-      border-radius: 18px;
-      background: rgba(255,255,255,.04);
-      padding:14px;
-    }
-    .mini h3{
-      margin:0 0 6px;
-      font-size:14px;
-      letter-spacing:-0.01em;
-    }
-    .mini p{margin:0;color:var(--muted);font-size:13px;line-height:1.55}
-    .stats{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:10px;
-      margin-top:10px;
-    }
-    .stat{
-      border:1px solid var(--border);
-      border-radius: 16px;
-      padding:12px;
-      background: rgba(255,255,255,.03);
-    }
-    .stat b{display:block; font-size:18px}
-    .stat span{color:var(--muted); font-size:12px; font-weight:700}
-
-    /* Footer */
-    footer{
-      border-top: 1px solid var(--border);
-      padding: 18px 0;
-      color: var(--muted);
-      font-size: 13px;
-    }
-    .foot{
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
-      flex-wrap:wrap;
-    }
-    .smalllinks{display:flex; gap:10px; flex-wrap:wrap}
-    .smalllinks a{padding:8px 10px; border-radius:12px}
-    .smalllinks a:hover{background: rgba(255,255,255,.06); color: var(--text)}
-
-    /* Responsive */
-    @media (max-width: 920px){
-      .hero-grid{grid-template-columns: 1fr; }
-      .grid{grid-template-columns: 1fr;}
-      .nav{display:none}
-    }
-  </style>
+@media (max-width: 920px){
+.hero-grid{grid-template-columns: 1fr;}
+.grid{grid-template-columns: 1fr;}
+.nav{display:none}
+}
+</style>
 </head>
 
 <body>
-  <div class="blur-orb orb1"></div>
-  <div class="blur-orb orb2"></div>
+<div class="blur-orb orb1"></div>
+<div class="blur-orb orb2"></div>
 
-  <div class="topbar">
-    <div class="container">
-      <div class="topbar-inner">
-        <a class="brand" href="#top">
-          <span class="logo" aria-hidden="true"></span>
-          <span>Soft Guide Scape</span>
-        </a>
+<div class="topbar">
+<div class="container">
+<div class="topbar-inner">
+<a class="brand" href="#top">
+<span class="logo" aria-hidden="true"></span>
+<span>Clasificación del Software</span>
+</a>
 
-        <nav class="nav" aria-label="Navegación">
-          <a href="#licencia">Licencia</a>
-          <a href="#funcion">Función</a>
-          <a href="#operacion">Operación</a>
-          <a href="#faq">FAQ</a>
-        </nav>
+<nav class="nav" aria-label="Navegación">
+<a href="#licencia">Licencia</a>
+<a href="#funcion">Función</a>
+<a href="#operacion">Operación</a>
+<a href="#faq">FAQ</a>
+</nav>
 
-        <div class="cta">
-          <button class="btn" id="btnReset" type="button" title="Restablecer filtros">Reset</button>
-          <a class="btn primary" href="#explorar">Explorar</a>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="cta">
+<button class="btn" id="btnReset" type="button">Reset</button>
+<a class="btn primary" href="#explorar">Explorar</a>
+</div>
+</div>
+</div>
+</div>
 
-  <header class="hero" id="top">
-    <div class="container">
-      <span class="kicker"><span class="dot"></span> Guía visual — Licencia · Función · Operación</span>
-      <h1>Clasificación del Software</h1>
-      <p class="sub">
-        Un resumen claro para estudiar rápido: filtra por categoría, busca por palabra y revisa ejemplos típicos.
-        Hecho para verse bien en GitHub Pages (sin instalaciones).
-      </p>
+<header class="hero" id="top">
+<div class="container">
+<span class="kicker"><span class="dot"></span> Guía visual — Licencia · Función · Operación</span>
+<h1>Clasificación del Software</h1>
+<p class="sub">
+Página interactiva para estudiar rápido: filtra por categoría, busca por palabra y revisa ejemplos típicos.
+</p>
 
-      <div class="hero-grid">
-        <section class="panel" aria-label="Buscador y filtros">
-          <div class="panel-inner">
-            <div class="searchbar" role="search">
-              <span aria-hidden="true">🔎</span>
-              <input id="q" type="search" placeholder="Busca: “libre”, “sistema”, “nube”, “licencia”…" autocomplete="off" />
-              <span class="kbd">Ctrl/⌘ K</span>
-            </div>
+<div class="hero-grid">
+<section class="panel" aria-label="Buscador y filtros">
+<div class="panel-inner">
+<div class="searchbar" role="search">
+<span aria-hidden="true">🔎</span>
+<input id="q" type="search" placeholder="Busca: “libre”, “sistema”, “nube”, “licencia”…" autocomplete="off" />
+<span class="kbd">Ctrl/⌘ K</span>
+</div>
 
-            <div class="quick" aria-label="Filtros rápidos" id="chips">
-              <button class="pill active" data-filter="all" type="button">Todo</button>
-              <button class="pill" data-filter="licencia" type="button">Licencia</button>
-              <button class="pill" data-filter="funcion" type="button">Función</button>
-              <button class="pill" data-filter="operacion" type="button">Operación</button>
-              <button class="pill" data-filter="ejemplos" type="button">Ejemplos</button>
-            </div>
+<div class="quick" id="chips">
+<button class="pill active" data-filter="all" type="button">Todo</button>
+<button class="pill" data-filter="licencia" type="button">Licencia</button>
+<button class="pill" data-filter="funcion" type="button">Función</button>
+<button class="pill" data-filter="operacion" type="button">Operación</button>
+</div>
 
-            <p class="hint">Tip: escribe una palabra y se filtran las tarjetas en vivo.</p>
-          </div>
-        </section>
+<p class="hint">Tip: escribe una palabra y se filtran las tarjetas en vivo.</p>
+</div>
+</section>
 
-        <aside class="mini panel" aria-label="Resumen">
-          <div class="panel-inner mini">
-            <div class="box">
-              <h3>📌 ¿Qué estás viendo?</h3>
-              <p>Una “chuleta” visual para estudiar: categorías + definiciones + ejemplos comunes.</p>
-              <div class="stats">
-                <div class="stat">
-                  <b id="countVisible">0</b>
-                  <span>tarjetas visibles</span>
-                </div>
-                <div class="stat">
-                  <b id="countTotal">0</b>
-                  <span>tarjetas totales</span>
-                </div>
-              </div>
-            </div>
-            <div class="box">
-              <h3>⚡ Atajos</h3>
-              <p><b>Ctrl/⌘ K</b> enfoca búsqueda · <b>Esc</b> limpia búsqueda</p>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </div>
-  </header>
+<aside class="mini panel" aria-label="Resumen">
+<div class="panel-inner mini">
+<div class="box">
+<h3>📌 Resumen</h3>
+<p>Tarjetas con definiciones y ejemplos, listas para repasar.</p>
+<div class="stats">
+<div class="stat">
+<b id="countVisible">0</b>
+<span>visibles</span>
+</div>
+<div class="stat">
+<b id="countTotal">0</b>
+<span>totales</span>
+</div>
+</div>
+</div>
+<div class="box">
+<h3>⚡ Atajos</h3>
+<p><b>Ctrl/⌘ K</b> buscar · <b>Esc</b> limpiar</p>
+</div>
+</div>
+</aside>
+</div>
+</div>
+</header>
 
-  <main id="explorar">
-    <section class="section" id="licencia">
-      <div class="container">
-        <h2>Por Licencia</h2>
-        <p class="lead">Se clasifica según permisos de uso, modificación y distribución.</p>
+<main id="explorar">
+<section class="section" id="licencia">
+<div class="container">
+<h2>Por Licencia</h2>
+<p class="lead">Clasifica según permisos de uso, modificación y distribución.</p>
+<div class="grid" id="cards-licencia"></div>
+</div>
+</section>
 
-        <div class="grid" id="cards-licencia">
-          <!-- Cards injected by JS -->
-        </div>
-      </div>
-    </section>
+<section class="section" id="funcion">
+<div class="container">
+<h2>Por Función</h2>
+<p class="lead">Clasifica por el propósito que cumple dentro de un sistema.</p>
+<div class="grid" id="cards-funcion"></div>
+</div>
+</section>
 
-    <section class="section" id="funcion">
-      <div class="container">
-        <h2>Por Función</h2>
-        <p class="lead">Se clasifica por el propósito que cumple dentro de un sistema.</p>
+<section class="section" id="operacion">
+<div class="container">
+<h2>Por Operación</h2>
+<p class="lead">Clasifica según cómo corre y dónde se ejecuta.</p>
+<div class="grid" id="cards-operacion"></div>
+</div>
+</section>
 
-        <div class="grid" id="cards-funcion"></div>
-      </div>
-    </section>
+<section class="section" id="faq">
+<div class="container">
+<h2>FAQ</h2>
+<p class="lead">Dudas típicas, rapiditas.</p>
 
-    <section class="section" id="operacion">
-      <div class="container">
-        <h2>Por Operación</h2>
-        <p class="lead">Se clasifica según cómo corre y dónde se ejecuta.</p>
+<div class="grid" style="grid-template-columns: 1fr; gap:12px;">
+<details class="card">
+<summary style="cursor:pointer; font-weight:800;">¿Un programa puede estar en varias categorías?</summary>
+<p style="margin-top:10px;">Sí. Por ejemplo, un sistema operativo puede ser “de sistema” (función) y “libre” (licencia).</p>
+</details>
 
-        <div class="grid" id="cards-operacion"></div>
-      </div>
-    </section>
+<details class="card">
+<summary style="cursor:pointer; font-weight:800;">¿Comercial y propietario es lo mismo?</summary>
+<p style="margin-top:10px;">No siempre. “Comercial” es el modelo de negocio; “propietario” describe la licencia.</p>
+</details>
+</div>
+</div>
+</section>
+</main>
 
-    <section class="section" id="faq">
-      <div class="container">
-        <h2>FAQ</h2>
-        <p class="lead">Dudas típicas (rápidas y sin rollo).</p>
+<footer>
+<div class="container">
+<div class="foot">
+<span>© 2026 · Clasificación del Software</span>
+<div class="smalllinks">
+<a href="#top">Arriba</a>
+<a href="#licencia">Licencia</a>
+<a href="#funcion">Función</a>
+<a href="#operacion">Operación</a>
+</div>
+</div>
+</div>
+</footer>
 
-        <div class="grid" style="grid-template-columns: 1fr; gap:12px;">
-          <details class="card">
-            <summary style="cursor:pointer; font-weight:800;">¿Un programa puede caer en varias categorías?</summary>
-            <p style="margin-top:10px;">Sí. Ejemplo: “Linux” es software de sistema (función) y también es libre (licencia).</p>
-          </details>
+<script>
+const DATA = [
+{ section:"licencia", tag:"Licencia", title:"Software Libre",
+desc:"Permite usar, estudiar, modificar y compartir el programa. El código suele estar disponible.",
+extra:"Ejemplos: GNU/Linux, VLC, GIMP." },
+{ section:"licencia", tag:"Licencia", title:"Open Source",
+desc:"Código accesible y modificable bajo licencias. Se enfoca en colaboración y transparencia.",
+extra:"Ejemplos: Firefox, Blender, LibreOffice." },
+{ section:"licencia", tag:"Licencia", title:"Software Propietario",
+desc:"El creador controla el código y permisos. No se puede modificar o distribuir libremente.",
+extra:"Ejemplos: Windows, Photoshop." },
 
-          <details class="card">
-            <summary style="cursor:pointer; font-weight:800;">¿Software comercial = software propietario?</summary>
-            <p style="margin-top:10px;">No siempre, pero muchas veces sí. “Comercial” habla del modelo de negocio; “propietario” habla de la licencia.</p>
-          </details>
+{ section:"funcion", tag:"Función", title:"Software de Sistema",
+desc:"Administra hardware y recursos. Base para que funcionen las aplicaciones.",
+extra:"Ejemplos: sistemas operativos, drivers." },
+{ section:"funcion", tag:"Función", title:"Software de Aplicación",
+desc:"Programas para tareas del usuario: estudiar, crear, comunicar, diseñar, jugar.",
+extra:"Ejemplos: navegadores, ofimática, mensajería." },
+{ section:"funcion", tag:"Función", title:"Software de Programación",
+desc:"Herramientas para crear software: IDEs, compiladores, control de versiones.",
+extra:"Ejemplos: VS Code, Git, compiladores." },
 
-          <details class="card">
-            <summary style="cursor:pointer; font-weight:800;">¿Qué es “SaaS”?</summary>
-            <p style="margin-top:10px;">Software que usas desde internet (en la nube) pagando suscripción o con plan gratis.</p>
-          </details>
-        </div>
-      </div>
-    </section>
-  </main>
+{ section:"operacion", tag:"Operación", title:"Escritorio (Desktop)",
+desc:"Se instala y corre en tu computadora local.",
+extra:"Ejemplos: Office desktop, editores locales." },
+{ section:"operacion", tag:"Operación", title:"Web",
+desc:"Se usa desde el navegador, sin instalar.",
+extra:"Ejemplos: Google Docs, plataformas web." },
+{ section:"operacion", tag:"Operación", title:"SaaS (Nube)",
+desc:"Software como servicio: se usa en internet y se mantiene del lado del proveedor.",
+extra:"Ejemplos: Notion, Canva, Slack." },
+];
 
-  <footer>
-    <div class="container">
-      <div class="foot">
-        <span>© 2026 · Soft Guide Scape · Hecho para GitHub Pages</span>
-        <div class="smalllinks">
-          <a href="#top">Arriba</a>
-          <a href="#licencia">Licencia</a>
-          <a href="#funcion">Función</a>
-          <a href="#operacion">Operación</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+const cardsBySection = {
+licencia: document.getElementById("cards-licencia"),
+funcion: document.getElementById("cards-funcion"),
+operacion: document.getElementById("cards-operacion"),
+};
 
-  <script>
-    const DATA = [
-      // LICENCIA
-      {
-        section: "licencia",
-        tag: "Licencia",
-        title: "Software Libre",
-        desc: "Permite usar, estudiar, modificar y compartir el programa. Normalmente el código fuente es accesible.",
-        extra: "Ejemplos: GNU/Linux, VLC, GIMP.",
-        accent: "ok"
-      },
-      {
-        section: "licencia",
-        tag: "Licencia",
-        title: "Software de Código Abierto (Open Source)",
-        desc: "El código es visible y puede modificarse bajo ciertas licencias; suele priorizar colaboración y transparencia.",
-        extra: "Ejemplos: Firefox, Blender, LibreOffice.",
-        accent: "ok"
-      },
-      {
-        section: "licencia",
-        tag: "Licencia",
-        title: "Software Propietario",
-        desc: "El creador controla el código y el uso. No se permite modificar o redistribuir libremente.",
-        extra: "Ejemplos: Windows, Photoshop (modelo típico).",
-        accent: "warn"
-      },
-      {
-        section: "licencia",
-        tag: "Licencia",
-        title: "Freeware",
-        desc: "Se puede usar gratis, pero no necesariamente permite modificar ni ver el código.",
-        extra: "Ejemplos: algunos reproductores, utilidades gratuitas.",
-        accent: "b"
-      },
-      {
-        section: "licencia",
-        tag: "Licencia",
-        title: "Shareware / Trial",
-        desc: "Versión de prueba o limitada. Te deja evaluar antes de pagar (tiempo o funciones).",
-        extra: "Ejemplos: pruebas de antivirus, apps con trial.",
-        accent: "b"
-      },
+const q = document.getElementById("q");
+const chips = document.getElementById("chips");
+const btnReset = document.getElementById("btnReset");
+const countVisible = document.getElementById("countVisible");
+const countTotal = document.getElementById("countTotal");
 
-      // FUNCIÓN
-      {
-        section: "funcion",
-        tag: "Función",
-        title: "Software de Sistema",
-        desc: "Administra hardware y recursos del equipo. Es la base para que corran otras apps.",
-        extra: "Ejemplos: sistemas operativos, drivers.",
-        accent: "a"
-      },
-      {
-        section: "funcion",
-        tag: "Función",
-        title: "Sistema Operativo",
-        desc: "Coordina procesos, memoria, archivos y dispositivos. Interfaz entre usuario y hardware.",
-        extra: "Ejemplos: Windows, Linux, macOS.",
-        accent: "a"
-      },
-      {
-        section: "funcion",
-        tag: "Función",
-        title: "Controladores (Drivers)",
-        desc: "Permiten que el sistema operativo se comunique con dispositivos (impresora, GPU, etc.).",
-        extra: "Ejemplo: driver de tarjeta gráfica.",
-        accent: "a"
-      },
-      {
-        section: "funcion",
-        tag: "Función",
-        title: "Software de Aplicación",
-        desc: "Programas para tareas del usuario: estudiar, crear, comunicar, diseñar, jugar, etc.",
-        extra: "Ejemplos: navegadores, editores, mensajería.",
-        accent: "b"
-      },
-      {
-        section: "funcion",
-        tag: "Función",
-        title: "Software de Programación",
-        desc: "Herramientas para crear software: editores, compiladores, intérpretes, IDEs y control de versiones.",
-        extra: "Ejemplos: VS Code, Git, compilers.",
-        accent: "b"
-      },
+let activeFilter = "all";
+let query = "";
 
-      // OPERACIÓN
-      {
-        section: "operacion",
-        tag: "Operación",
-        title: "De Escritorio (Desktop)",
-        desc: "Se instala y corre en tu computadora local (Windows/macOS/Linux).",
-        extra: "Ejemplos: Office desktop, editores locales.",
-        accent: "a"
-      },
-      {
-        section: "operacion",
-        tag: "Operación",
-        title: "Web (En el Navegador)",
-        desc: "Se usa desde el navegador sin instalar (o casi). Ideal para acceso rápido en cualquier dispositivo.",
-        extra: "Ejemplos: Google Docs, plataformas web.",
-        accent: "b"
-      },
-      {
-        section: "operacion",
-        tag: "Operación",
-        title: "Móvil (Apps)",
-        desc: "Pensado para celulares/tablets, con interfaz y recursos optimizados (sensores, cámara, etc.).",
-        extra: "Ejemplos: redes sociales, banca móvil.",
-        accent: "b"
-      },
-      {
-        section: "operacion",
-        tag: "Operación",
-        title: "SaaS (Software como Servicio)",
-        desc: "Funciona en la nube: pagas suscripción o plan. Se actualiza y mantiene del lado del proveedor.",
-        extra: "Ejemplos: Notion, Canva, Slack (modelo SaaS).",
-        accent: "ok"
-      },
-      {
-        section: "operacion",
-        tag: "Operación",
-        title: "Embebido (Embedded)",
-        desc: "Software dentro de dispositivos: routers, autos, TVs, microcontroladores. Se enfoca en estabilidad/recursos.",
-        extra: "Ejemplos: firmware de un router, sistemas IoT.",
-        accent: "warn"
-      }
-    ];
+function makeCard(item){
+const el = document.createElement("article");
+el.className = "card";
+el.dataset.section = item.section;
+el.dataset.search = (item.title + " " + item.desc + " " + item.extra + " " + item.tag).toLowerCase();
+el.innerHTML = `
+<span class="tag">✨ <strong>${item.tag}</strong></span>
+<h3>${item.title}</h3>
+<p>${item.desc}</p>
+<p class="hint">${item.extra}</p>
+`;
+return el;
+}
 
-    const cardsBySection = {
-      licencia: document.getElementById("cards-licencia"),
-      funcion: document.getElementById("cards-funcion"),
-      operacion: document.getElementById("cards-operacion")
-    };
+const allCardEls = [];
 
-    const q = document.getElementById("q");
-    const chips = document.getElementById("chips");
-    const btnReset = document.getElementById("btnReset");
-    const countVisible = document.getElementById("countVisible");
-    const countTotal = document.getElementById("countTotal");
+function render(){
+Object.values(cardsBySection).forEach(n => n.innerHTML = "");
+allCardEls.length = 0;
 
-    let activeFilter = "all";
-    let query = "";
+DATA.forEach(item => {
+const card = makeCard(item);
+cardsBySection[item.section].appendChild(card);
+allCardEls.push(card);
+});
 
-    const accentBadge = (accent) => {
-      if (accent === "ok") return "✅";
-      if (accent === "warn") return "⚠️";
-      if (accent === "a") return "🧩";
-      if (accent === "b") return "✨";
-      return "•";
-    };
+countTotal.textContent = String(allCardEls.length);
+applyFilters();
+}
 
-    function makeCard(item){
-      const el = document.createElement("article");
-      el.className = "card";
-      el.dataset.section = item.section;
-      el.dataset.search = (item.title + " " + item.desc + " " + item.extra + " " + item.tag).toLowerCase();
+function applyFilters(){
+const qLower = query.trim().toLowerCase();
+let visible = 0;
 
-      el.innerHTML = `
-        <span class="tag">${accentBadge(item.accent)} <strong>${item.tag}</strong></span>
-        <h3>${item.title}</h3>
-        <p>${item.desc}</p>
-        <p class="hint">${item.extra}</p>
-      `;
-      return el;
-    }
+allCardEls.forEach(card => {
+const section = card.dataset.section;
+const matchesSection = activeFilter === "all" ? true : (section === activeFilter);
+const matchesQuery = qLower.length === 0 ? true : card.dataset.search.includes(qLower);
 
-    const allCardEls = [];
+const show = matchesSection && matchesQuery;
+card.style.display = show ? "" : "none";
+if (show) visible++;
+});
 
-    function render(){
-      // clear
-      Object.values(cardsBySection).forEach(n => n.innerHTML = "");
-      allCardEls.length = 0;
+countVisible.textContent = String(visible);
+}
 
-      DATA.forEach(item => {
-        const card = makeCard(item);
-        cardsBySection[item.section].appendChild(card);
-        allCardEls.push(card);
-      });
+chips.addEventListener("click", (e) => {
+const btn = e.target.closest(".pill");
+if (!btn) return;
+activeFilter = btn.dataset.filter;
 
-      countTotal.textContent = String(allCardEls.length);
-      applyFilters();
-    }
+[...chips.querySelectorAll(".pill")].forEach(b => b.classList.remove("active"));
+btn.classList.add("active");
 
-    function applyFilters(){
-      const qLower = query.trim().toLowerCase();
+applyFilters();
+});
 
-      let visible = 0;
-      allCardEls.forEach(card => {
-        const section = card.dataset.section;
-        const matchesSection =
-          activeFilter === "all" ? true :
-          activeFilter === "ejemplos" ? true :
-          section === activeFilter;
+q.addEventListener("input", () => {
+query = q.value;
+applyFilters();
+});
 
-        const matchesQuery = qLower.length === 0 ? true : card.dataset.search.includes(qLower);
+btnReset.addEventListener("click", () => {
+query = "";
+q.value = "";
+activeFilter = "all";
+[...chips.querySelectorAll(".pill")].forEach(b => b.classList.remove("active"));
+chips.querySelector('[data-filter="all"]').classList.add("active");
+applyFilters();
+window.scrollTo({top:0, behavior:"smooth"});
+});
 
-        const show = matchesSection && matchesQuery;
+document.addEventListener("keydown", (e) => {
+const isMac = navigator.platform.toLowerCase().includes("mac");
+const cmdk = (isMac && e.metaKey && e.key.toLowerCase() === "k") || (!isMac && e.ctrlKey && e.key.toLowerCase() === "k");
+if (cmdk) { e.preventDefault(); q.focus(); q.select(); }
+if (e.key === "Escape") {
+if (document.activeElement === q || q.value.trim().length) {
+q.value = ""; query = ""; applyFilters(); q.blur();
+}
+}
+});
 
-        card.style.display = show ? "" : "none";
-        if (show) visible++;
-      });
-
-      countVisible.textContent = String(visible);
-
-      // If filter is "ejemplos", auto-scroll to first visible section
-      if (activeFilter !== "ejemplos") return;
-      const firstVisible = allCardEls.find(c => c.style.display !== "none");
-      if (firstVisible) {
-        const secId = firstVisible.dataset.section;
-        document.getElementById(secId)?.scrollIntoView({behavior:"smooth", block:"start"});
-      }
-    }
-
-    chips.addEventListener("click", (e) => {
-      const btn = e.target.closest(".pill");
-      if (!btn) return;
-      activeFilter = btn.dataset.filter;
-
-      [...chips.querySelectorAll(".pill")].forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-
-      applyFilters();
-    });
-
-    q.addEventListener("input", () => {
-      query = q.value;
-      applyFilters();
-    });
-
-    btnReset.addEventListener("click", () => {
-      query = "";
-      q.value = "";
-      activeFilter = "all";
-      [...chips.querySelectorAll(".pill")].forEach(b => b.classList.remove("active"));
-      chips.querySelector('[data-filter="all"]').classList.add("active");
-      applyFilters();
-      window.scrollTo({top:0, behavior:"smooth"});
-    });
-
-    // Keyboard shortcuts
-    document.addEventListener("keydown", (e) => {
-      const isMac = navigator.platform.toLowerCase().includes("mac");
-      const cmdk = (isMac && e.metaKey && e.key.toLowerCase() === "k") || (!isMac && e.ctrlKey && e.key.toLowerCase() === "k");
-      if (cmdk) {
-        e.preventDefault();
-        q.focus();
-        q.select();
-      }
-      if (e.key === "Escape") {
-        if (document.activeElement === q || q.value.trim().length) {
-          q.value = "";
-          query = "";
-          applyFilters();
-          q.blur();
-        }
-      }
-    });
-
-    render();
-  </script>
-</body>
-</html>
-[4:54 p.m., 15/1/2026] JIMENEZ❣️: <!doctype html>
-<html lang="es">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>software_4t</title>
-</head>
-<body style="font-family: Arial; background:#0b0f19; color:#e9ecf1; padding:40px;">
-  <div style="max-width:900px; background:#12182a; border:1px solid rgba(255,255,255,.12); border-radius:16px; padding:24px;">
-    <h1 style="margin:0 0 10px;">✅ Ya se ve mi página</h1>
-    <p style="margin:0; color:rgba(233,236,241,.75); line-height:1.6;">
-      Si ves esto, GitHub Pages ya está usando tu index.html.
-    </p>
-  </div>
+render();
+</script>
 </body>
 </html>
